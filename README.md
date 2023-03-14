@@ -3,22 +3,31 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+---
+# Setup project using Docker (recommended)
+---
+- Install Docker Engine (installation steps [here](https://docs.docker.com/engine/install/linux-postinstall/))
+- Post installation additional step:
+  - Create a docker group
+  
+  ``sudo groupadd docker``
+  - Add user to the group
 
-* Ruby version
+  ``sudo usermod -aG docker $USER``
 
-* System dependencies
+  ``sudo gpasswd -a $USER docker``
 
-* Configuration
+  ``newgrp docker``
+  
+- Install Docker Compose (installation steps [here](https://docs.docker.com/compose/install/))
 
-* Database creation
+- Clone the current project and navigate inside the project's directory.
 
-* Database initialization
+```
+docker-compose up --build
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Open another terminal tab in order to set up the db:
+```
+docker-compose run web rails db:setup
+```
