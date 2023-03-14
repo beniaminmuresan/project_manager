@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectTask < ApplicationRecord
   validates_presence_of :title, :body
 
