@@ -13,7 +13,7 @@ RSpec.describe Comment, type: :model do
   end
 
   context 'comment belongs to project task' do
-    let(:instance) { FactoryBot.create(:comment, :for_project_task) }
+    let(:instance) { FactoryBot.create(:comment, :for_task) }
     it { is_expected.to validate_presence_of(:full_name) }
     it { is_expected.to validate_presence_of(:body) }
     it { is_expected.to belong_to(:commentable) }

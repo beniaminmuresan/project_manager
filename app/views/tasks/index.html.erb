@@ -5,10 +5,10 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Project tasks for project: <%= @project.title %></h1>
-    <%= link_to 'New project task', new_project_project_task_path(@project), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to 'New project task', new_project_task_path(@project), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
   
-  <div id="project_tasks" class="w-full">
-    <%= render @project_tasks %>
+  <div id="tasks" class="w-full">
+    <%= render @tasks %>
   </div>
 </div>

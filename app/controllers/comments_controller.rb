@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html do
-          redirect_to @commentable, notice: 'Your comment was sucessfully posted.'
+          puts @commentable.attributes
+          redirect_back fallback_location: @commentable, notice: 'Your comment was sucessfully posted.'
         end
       else
         format.html { render :new, status: :unprocessable_entity }

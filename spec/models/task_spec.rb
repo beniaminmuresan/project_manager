@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe ProjectTask, type: :model do
-  let(:instance) { FactoryBot.create(:project_task) }
+RSpec.describe Task, type: :model do
+  let(:instance) { FactoryBot.create(:task) }
 
   subject { instance }
 

@@ -9,8 +9,8 @@ FactoryBot.define do
       association :commentable, factory: :project
     end
 
-    trait :for_project_task do
-      association :commentable, factory: :project_task
+    trait :for_task do
+      association :commentable, factory: :task
     end
   end
 end

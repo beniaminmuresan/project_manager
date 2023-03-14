@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root to: 'projects#index'
   resources :projects do
     resources :comments, module: :projects
-    resources :project_tasks do
-      resources :comments, module: :project_tasks
+    resources :tasks do
+      resources :comments, module: :tasks
     end
   end
 end

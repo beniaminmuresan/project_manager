@@ -1,10 +1,10 @@
-<%= form_for([project, project_task], class: "contents") do |form| %>
-  <% if project_task.errors.any? %>
+<%= form_for([project, task], class: "contents") do |form| %>
+  <% if task.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(project_task.errors.count, "error") %> prohibited this project_task from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-        <% project_task.errors.each do |error| %>
+        <% task.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProjectTask < ApplicationRecord
+class Task < ApplicationRecord
   validates_presence_of :title, :body
 
   belongs_to :project
