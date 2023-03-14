@@ -26,8 +26,14 @@ Layout/LineLength:
     - 'bin/bundle'
 
 Metrics/MethodLength:
+  Max: 12
   Exclude:
     - 'bin/bundle'
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
 
 Style/SignalException:
   Enabled: false

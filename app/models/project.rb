@@ -4,5 +4,5 @@ class Project < ApplicationRecord
   validates_presence_of :title, :body
 
   has_many :comments, as: :commentable
-  has_many :project_tasks
+  has_many :project_tasks, dependent: :destroy
 end
