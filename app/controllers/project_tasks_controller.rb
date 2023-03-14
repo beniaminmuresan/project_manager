@@ -26,7 +26,8 @@ class ProjectTasksController < ApplicationController
     respond_to do |format|
       if @project_task.save
         format.html do
-          redirect_to project_project_tasks_path(id: @project_task.id), notice: 'Project task was successfully created.'
+          redirect_to project_project_task_path(@project, @project_task),
+                      notice: 'Project task was successfully created.'
         end
         format.json { render :show, status: :created, location: @project_task }
       else
@@ -41,7 +42,8 @@ class ProjectTasksController < ApplicationController
     respond_to do |format|
       if @project_task.update(project_task_params)
         format.html do
-          redirect_to project_project_tasks_url(@project), notice: 'Project task was successfully updated.'
+          redirect_to project_project_task_path(@project, @project_task),
+                      notice: 'Project task was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @project_task }
       else

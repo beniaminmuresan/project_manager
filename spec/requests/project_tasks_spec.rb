@@ -46,14 +46,14 @@ RSpec.describe '/project_tasks', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       project_task = ProjectTask.create! valid_attributes
-      get project_project_tasks_path(id: project_task.id, project_id: project.id)
+      get project_project_task_path(project, project_task)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_project_project_task_url(project_id: project.id)
+      get new_project_project_task_url(project)
       expect(response).to be_successful
     end
   end
@@ -61,7 +61,7 @@ RSpec.describe '/project_tasks', type: :request do
   describe 'GET /edit' do
     it 'renders a successful response' do
       project_task = ProjectTask.create! valid_attributes
-      get edit_project_project_task_path(project_id: project.id, id: project_task.id)
+      get edit_project_project_task_path(project, project_task)
       expect(response).to be_successful
     end
   end
@@ -76,7 +76,7 @@ RSpec.describe '/project_tasks', type: :request do
 
       it 'redirects to the created project_task' do
         post project_project_tasks_url(project_id: project.id), params: { project_task: valid_attributes }
-        expect(response).to redirect_to(project_project_tasks_path(id: ProjectTask.last))
+        expect(response).to redirect_to(project_project_task_path(project, ProjectTask.last))
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe '/project_tasks', type: :request do
 
       it 'updates the requested project_task' do
         project_task = ProjectTask.create! valid_attributes
-        patch project_project_task_path(project_id: project.id, id: project_task.id),
+        patch project_project_task_path(project, project_task),
               params: { project_task: new_attributes }
         project_task.reload
         expect(project_task.attributes.values).to include(*new_attributes.values)
@@ -113,17 +113,17 @@ RSpec.describe '/project_tasks', type: :request do
 
       it 'redirects to the project_task' do
         project_task = ProjectTask.create! valid_attributes
-        patch project_project_task_path(project_id: project.id, id: project_task.id),
+        patch project_project_task_path(project, project_task),
               params: { project_task: new_attributes }
         project_task.reload
-        expect(response).to redirect_to(project_project_task_url(project_task))
+        expect(response).to redirect_to(project_project_task_url(project, project_task))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         project_task = ProjectTask.create! valid_attributes
-        patch project_project_task_path(project_id: project.id, id: project_task.id),
+        patch project_project_task_path(project, project_task),
               params: { project_task: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -134,13 +134,13 @@ RSpec.describe '/project_tasks', type: :request do
     it 'destroys the requested project_task' do
       project_task = ProjectTask.create! valid_attributes
       expect do
-        delete project_project_task_path(project_id: project.id, id: project_task.id)
+        delete project_project_task_path(project, project_task)
       end.to change(ProjectTask, :count).by(-1)
     end
 
     it 'redirects to the project_tasks list' do
       project_task = ProjectTask.create! valid_attributes
-      delete project_project_task_path(project_id: project.id, id: project_task.id)
+      delete project_project_task_path(project, project_task)
       expect(response).to redirect_to(project_project_tasks_url(project_id: project.id))
     end
   end

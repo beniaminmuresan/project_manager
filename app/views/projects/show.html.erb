@@ -6,13 +6,11 @@
 
     <%= render @project %>
 
-    <%= link_to 'Edit this project', edit_project_path(@project), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this project', project_path(@project), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to projects', projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit project', edit_project_path(@project), class: "mt-4 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Back to projects', projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Project Tasks', project_project_tasks_path(@project), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-
+    <div class="inline-block ml-2">
+      <%= button_to 'Destroy this project', project_path(@project), method: :delete, class: "mt-4 rounded-lg py-3 px-5 bg-red-100 font-medium" %>
+    </div>
   </div>
 </div>
