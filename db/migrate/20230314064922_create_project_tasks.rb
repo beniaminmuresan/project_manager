@@ -3,6 +3,7 @@ class CreateProjectTasks < ActiveRecord::Migration[7.0]
     create_table :project_tasks do |t|
       t.string :title
       t.text :body
+      t.references :project, index: true
 
       t.timestamps
     end
