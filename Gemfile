@@ -51,6 +51,22 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # Terminal beautifier
+  gem 'awesome_print'
+
+  # Rspec + useful dependecies
+  gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-its'
+  gem 'rspec-json_expectations'
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+
+  # Mock Data
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
