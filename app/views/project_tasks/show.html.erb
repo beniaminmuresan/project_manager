@@ -6,6 +6,34 @@
 
     <%= render @project_task %>
 
+    <h2>Comments</h2>
+    <% @project_task.comments.each do |comment| %>
+      <p class="my-5 mt-4">
+        <strong>Commenter:</strong>
+        <%= comment.full_name %>
+      </p>
+
+      <p class="my-5 mt-4">
+        <strong>Comment:</strong>
+        <%= comment.body %>
+      </p>
+    <% end %>
+
+    <h2>Add a comment:</h2>
+    <%= form_with model: [ @project_task, @project_task.comments.build ] do |form| %>
+      <p>
+        <%= form.label :full_name %><br>
+        <%= form.text_field :full_name%>
+      </p>
+      <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %>
+      </p>
+      <p>
+        <%= form.submit %>
+      </p>
+    <%end%>
+
     <%= link_to 'Edit project_task', edit_project_project_task_path(@project, @project_task), class: "mt-4 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this project_task', project_project_task_path(@project, @project_task), method: :delete, class: "mt-4 rounded-lg py-3 px-5 bg-red-100 font-medium" %>

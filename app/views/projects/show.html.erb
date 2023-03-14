@@ -6,6 +6,34 @@
 
     <%= render @project %>
 
+    <h2>Comments</h2>
+    <% @project.comments.each do |comment| %>
+      <p>
+        <strong>Commenter:</strong>
+        <%= comment.full_name %>
+      </p>
+
+      <p>
+        <strong>Comment:</strong>
+        <%= comment.body %>
+      </p>
+    <% end %>
+
+    <h2>Add a comment:</h2>
+    <%= form_with model: [ @project, @project.comments.build ] do |form| %>
+      <p>
+        <%= form.label :full_name %><br>
+        <%= form.text_field :full_name%>
+      </p>
+      <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %>
+      </p>
+      <p>
+        <%= form.submit %>
+      </p>
+    <%end%>
+
     <%= link_to 'Edit project', edit_project_path(@project), class: "mt-4 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Back to projects', projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Project Tasks', project_project_tasks_path(@project), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
