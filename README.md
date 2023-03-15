@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Demo hosted here (no auth required): https://projectmanager.herokuapp.com/
 
 ---
 # Setup project using Docker (recommended)
